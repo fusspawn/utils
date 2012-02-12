@@ -40,8 +40,8 @@ namespace WurmUtils.Event
                 if (!LastEvents.Contains(Line))
                 {
                     LastEvents.Add(Line);
-                    if(ThrowEvents)
-                        Console.WriteLine("New Event: " + Line);
+                    if (ThrowEvents)
+                        EventManager.RouteEvent(Line);
                 }
                 Line = Reader.ReadLine();
             }

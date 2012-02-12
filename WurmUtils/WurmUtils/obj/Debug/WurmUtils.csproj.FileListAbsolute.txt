@@ -3,3 +3,4 @@ R:\Dev\Wurm\WurmUtils\WurmUtils\bin\Debug\WurmUtils.pdb
 R:\Dev\Wurm\WurmUtils\WurmUtils\obj\Debug\WurmUtils.csprojResolveAssemblyReference.cache
 R:\Dev\Wurm\WurmUtils\WurmUtils\obj\Debug\WurmUtils.dll
 R:\Dev\Wurm\WurmUtils\WurmUtils\obj\Debug\WurmUtils.pdb
+R:\Dev\Wurm\WurmUtils\WurmUtils\bin\Debug\InputSimulator.dll
