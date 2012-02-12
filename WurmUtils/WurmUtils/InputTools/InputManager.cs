@@ -22,7 +22,36 @@ namespace WurmUtils.InputTools
         public static string CurrentAction = "";
         static VirtualKeyCode ActionKey = VirtualKeyCode.VK_K;
         static VirtualKeyCode RebinderKey = VirtualKeyCode.VK_I;
-        
+
+
+        /**
+    * Mouse functions
+    */
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern long mouse_event(Int32 dwFlags, Int32 dx, Int32 dy, Int32 cButtons, Int32 dwExtraInfo);
+
+        [DllImport("user32.dll", ExactSpelling = true)]
+        public static extern void SetCursorPos(Int32 x, Int32 y);
+
+        public const Int32 MOUSEEVENTF_ABSOLUTE = 0x8000;
+        public const Int32 MOUSEEVENTF_LEFTDOWN = 0x0002;
+        public const Int32 MOUSEEVENTF_LEFTUP = 0x0004;
+        public const Int32 MOUSEEVENTF_MIDDLEDOWN = 0x0020;
+        public const Int32 MOUSEEVENTF_MIDDLEUP = 0x0040;
+        public const Int32 MOUSEEVENTF_MOVE = 0x0001;
+        public const Int32 MOUSEEVENTF_RIGHTDOWN = 0x0008;
+        public const Int32 MOUSEEVENTF_RIGHTUP = 0x0010;
+
+        public static void PerformLeftClick(Int32 x, Int32 y)
+        {
+            SetCursorPos(x, y);
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        }
+
+        public static void PerformRightClick(Int32 x, Int32 y) { 
+            
+        }
         
         public static void SendAction(string ActionName) {
             if (CurrentAction != ActionName) {

@@ -32,6 +32,7 @@ namespace WurmUtils.Event
 
 
         void ProcessEventFile(bool ThrowEvents=true) {
+
             TextReader Reader = File.OpenText("event.tmp");
             String Line = Reader.ReadLine();
                 
@@ -45,7 +46,11 @@ namespace WurmUtils.Event
                 }
                 Line = Reader.ReadLine();
             }
+
             Reader.Close();
+
+            if (ThrowEvents)
+                EventManager.RouteEvent("Tick");
         }
     }
 }
