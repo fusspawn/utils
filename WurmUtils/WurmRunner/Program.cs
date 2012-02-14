@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WurmUtils.Event;
 using WurmUtils.EventHandlers;
+using WurmUtils.InputTools;
 
 namespace WurmRunner
 {
@@ -21,11 +22,18 @@ namespace WurmRunner
             EventManager.EventHandlers.Add(new Mining());
             EventManager.EventHandlers.Add(new Prospecting());
             EventManager.EventHandlers.Add(new ToFarAway());
-            
+            EventManager.EventHandlers.Add(new Fishing());
+
+
+            ScreenShotManager.TakescreenShot();
+
             while (true) {
                 System.Threading.Thread.Sleep(100);
                 Parser.OnEventLogTick();
+                ScreenShotManager.ResetFrame();
             }
+
+            ScreenShotManager.TakescreenShot();
         }
     }
 }

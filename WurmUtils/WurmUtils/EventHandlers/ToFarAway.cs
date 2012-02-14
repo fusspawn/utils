@@ -24,6 +24,7 @@ namespace WurmUtils.EventHandlers
             Console.WriteLine("To Far Away: Handling Event: {0}", Message);
             InputManager.HoldKey(VirtualKeyCode.VK_W, 2000);
             Console.WriteLine("Should be in range now");
+            Stamina();
             InputManager.SendAction(InputManager.CurrentAction);
             base.OnEvent(Message);
         }

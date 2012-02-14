@@ -21,7 +21,7 @@ namespace WurmUtils.EventHandlers
         {
             Console.WriteLine("Mining: Handling Event: {0}", Message);
             Console.WriteLine("Sleeping 1.5 sec for Stamina");
-            Thread.Sleep(1500);
+            Stamina();
             InputTools.InputManager.SendAction("MINE_FORWARD");
             Console.WriteLine("Mining: MINE_FORWARD event sent");
             Console.WriteLine("Mining for the: " + StatsManager.Incr("Times Mined") + " Time. ");

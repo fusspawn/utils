@@ -20,8 +20,7 @@ namespace WurmUtils.EventHandlers
         public override void OnEvent(string Message)
         {
             Console.WriteLine("Prospect: Handling Event: {0}", Message);
-            Console.WriteLine("Sleeping 1.5 sec for Stamina");
-            Thread.Sleep(1500);
+            Stamina();
             InputTools.InputManager.SendAction("PROSPECT");
             Console.WriteLine("Mining: PROSPECT event sent");
             Console.WriteLine("Prospecting for the: " + StatsManager.Incr("Times Prospected") + " Time. ");

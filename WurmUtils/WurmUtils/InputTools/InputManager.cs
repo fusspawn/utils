@@ -42,15 +42,16 @@ namespace WurmUtils.InputTools
         public const Int32 MOUSEEVENTF_RIGHTDOWN = 0x0008;
         public const Int32 MOUSEEVENTF_RIGHTUP = 0x0010;
 
-        public static void PerformLeftClick(Int32 x, Int32 y)
-        {
+        public static void PerformLeftClick(Int32 x, Int32 y)  {
             SetCursorPos(x, y);
             mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
             mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
         }
 
-        public static void PerformRightClick(Int32 x, Int32 y) { 
-            
+        public static void PerformRightClick(Int32 x, Int32 y) {
+            SetCursorPos(x, y);
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
         }
         
         public static void SendAction(string ActionName) {
@@ -61,6 +62,7 @@ namespace WurmUtils.InputTools
 
             InputSimulator.SimulateKeyPress(ActionKey);
         }
+
         private static void RebindAction(string ActionName)
         {
             string rebind_code = "bind k " + ActionName;
@@ -74,6 +76,7 @@ namespace WurmUtils.InputTools
             Writer.Close();
             CurrentAction = ActionName;
         }
+
         public static bool SetWindow(string WindowTitle) {
             WindowHandle = FindWindow(null, WindowTitle);
             if (WindowHandle == IntPtr.Zero)
@@ -84,6 +87,12 @@ namespace WurmUtils.InputTools
             Console.WriteLine("Found Windows.");
             return true;
         }
+
+        public static IntPtr GetWindow() {
+            return WindowHandle;
+        }
+
+
         public static void PressKey(VirtualKeyCode S)
         {
             if (WindowHandle == null) {
